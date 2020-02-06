@@ -1,0 +1,46 @@
+<Page navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
+        <Label text="Settings"></Label>
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="page__content">
+            <GridLayout>
+                <Label text="Pick A News Category:" fontSize="16"></Label>
+                <ListPicker id="category" items="{{ categories }}" selectedIndex="0" selectedIndexChange="{{ onCategorySelected }}" />
+            </GridLayout>
+            <GridLayout>
+                <Label text="Pick A Country:" fontSize="16"></Label>
+                <ListPicker id="country" items="{{ countries }}" selectedIndex="0" selectedIndexChange="{{ onCountrySelected }}" />
+            </GridLayout>
+            <StackLayout>
+                <Label text="Big Font: " fontSize="16" width="auto"></Label>
+                <Switch checked="{{ isBigFont }}" tap="{{ onTextSizeChanged }}"></Switch>
+                <Label text="Dark Theme: " fontSize="16" width="auto"></Label>
+                <Switch checked="{{ isDarkTheme }}" tap="{{ onThemeChanged }}"></Switch>
+                <Label text="Filter Search By Date: " fontSize="16" width="auto"></Label>
+                <Switch checked="{{ isFilterDate }}" tap="{{ onFilterDate }}"></Switch>
+            </StackLayout>
+            <GridLayout columns="*">
+                <Label text="From: " fontSize="16"></Label>
+                <DatePicker id="dateFrom" minDate="{{ minDate }}" maxDate="{{ maxDate }}" ></DatePicker>
+            </GridLayout>
+            <GridLayout columns="*">
+                <Label text="To: " fontSize="16"></Label>
+                <DatePicker id="dateTo" minDate="{{ minDate }}" maxDate="{{ date }}" ></DatePicker>
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

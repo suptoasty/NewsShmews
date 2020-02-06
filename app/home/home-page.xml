@@ -1,0 +1,29 @@
+<Page navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <!-- 
+        Use the NavigationButton as a side-drawer button in Android
+        because ActionItems are shown on the right side of the ActionBar
+        -->
+        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
+        <!-- 
+        Use the ActionItem for IOS with position set to left. Using the
+        NavigationButton as a side-drawer button in iOS is not possible,
+        because its function is to always navigate back in the application.
+        -->
+        <ActionItem icon="res://menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
+        <Label text="{{ filtered }}" loaded="{{ getFiltered }}"></Label>
+    </ActionBar>
+
+    <ScrollView>
+        <ListView items="{{ items }}" rowHeight="100" itemTap="{{ onItemTapped }}" itemLoading="{{ onItemLoading }}" loaded="{{ onLoaded }}" >
+            <ListView.itemTemplate>
+                <GridLayout rows="*, *, auto" columns="100, *">
+                    <Image row="0" col="0" src="{{ urlToImage }}"></Image>
+                    <Label id="title" row="0" col="1" text="{{ title }}" textWrap="true" />
+                    <Label id="author" row="1" col="2" text="{{ author }}" textWrap="true" />
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </ScrollView>
+</Page>
