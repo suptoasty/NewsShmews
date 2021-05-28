@@ -1,11 +1,12 @@
-const app = require("tns-core-modules/application");
-const SettingsViewModel = require("./settings-view-model");
+import { Application } from '@nativescript/core'
 
-function onNavigatingTo(args) {
-    const page = args.object;
-    page.bindingContext = new SettingsViewModel();
+import { SettingsViewModel } from './settings-view-model'
 
-    page.getViewById("dateFrom").date = page.bindingContext.minDate;
+export function onNavigatingTo(args) {
+  const page = args.object
+  page.bindingContext = new SettingsViewModel()
+
+  page.getViewById("dateFrom").date = page.bindingContext.minDate;
     page.getViewById("dateTo").date = page.bindingContext.date;
 
     page.getViewById("country").on("selectedIndexChange", function(args) {
@@ -22,11 +23,7 @@ function onNavigatingTo(args) {
     });
 }
 
-function onDrawerButtonTap(args) {
-    const sideDrawer = app.getRootView();
-    sideDrawer.showDrawer();
+export function onDrawerButtonTap(args) {
+  const sideDrawer = Application.getRootView()
+  sideDrawer.showDrawer()
 }
-
-
-exports.onNavigatingTo = onNavigatingTo;
-exports.onDrawerButtonTap = onDrawerButtonTap;

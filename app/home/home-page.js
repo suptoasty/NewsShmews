@@ -1,20 +1,14 @@
-/* eslint-disable arrow-parens */
-/* eslint-disable prefer-template */
-const app = require("tns-core-modules/application");
-const HomeViewModel = require("./home-view-model");
-const listViewModule = require("tns-core-modules/ui/list-view");
+import { Application } from '@nativescript/core'
 
-function onNavigatingTo(args) {
-    const page = args.object;
-    let homeview = new HomeViewModel();
+import { HomeViewModel } from './home-view-model'
 
-    page.bindingContext = homeview;
+export function onNavigatingTo(args) {
+  const page = args.object
+  page.bindingContext = new HomeViewModel()
 }
 
-function onDrawerButtonTap(args) {
-    const sideDrawer = app.getRootView();
-    sideDrawer.showDrawer();
+export function onDrawerButtonTap(args) {
+  const sideDrawer = Application.getRootView()
+  sideDrawer.showDrawer()
 }
 
-exports.onNavigatingTo = onNavigatingTo;
-exports.onDrawerButtonTap = onDrawerButtonTap;

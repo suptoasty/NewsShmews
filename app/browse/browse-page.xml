@@ -1,22 +1,17 @@
-<Page navigatingTo="onNavigatingTo" xmlns="http://schemas.nativescript.org/tns.xsd">
+<Page
+    navigatingTo="onNavigatingTo"
+    xmlns="http://schemas.nativescript.org/tns.xsd">
 
     <ActionBar>
-        <!-- 
-        Use the NavigationButton as a side-drawer button in Android
-        because ActionItems are shown on the right side of the ActionBar
-        -->
-        <NavigationButton ios:visibility="collapsed" icon="res://menu" tap="onDrawerButtonTap"></NavigationButton>
-        <!-- 
-        Use the ActionItem for IOS with position set to left. Using the
-        NavigationButton as a side-drawer button in iOS is not possible,
-        because its function is to always navigate back in the application.
-        -->
-        <ActionItem icon="res://menu" android:visibility="collapsed" tap="onDrawerButtonTap" ios.position="left"></ActionItem>
-        <Label text="Browse"></Label>
+        <NavigationButton visibility="hidden"></NavigationButton>
+        <GridLayout columns="50, *">
+            <Label class="action-bar-title" text="Browse" colSpan="2"/>
+            <Label class="fas" text="&#xf0c9;" tap="onDrawerButtonTap"/>
+        </GridLayout>
     </ActionBar>
 
-    <GridLayout rows="auto, *" class="page__content">
-        <Label row="0" text="Jason Lonsinger - in fulfillment of requirements for CMSC 4233 Spring 2020 assignment 5" textWrap="true"></Label>
-        <Label row="1" text="credit to https://newsapi.org for the images and articles" textWrap="true"></Label>
+    <GridLayout class="page__content">
+        <Label class="page__content-icon far" text="&#xf1ea;"></Label>
+        <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
     </GridLayout>
 </Page>

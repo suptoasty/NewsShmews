@@ -1,4 +1,5 @@
-const application = require("tns-core-modules/application");
+import { Application } from '@nativescript/core'
+
 global.isBigFont = false;
 global.isDarkTheme = false;
 global.category = "General";
@@ -7,9 +8,7 @@ global.isFilterDate = false;
 global.dateFrom = "2020-01-06";
 global.dateTo = "9999-12-31";
 
-application.run({
-    moduleName: "app-root/app-root"
-});
+Application.run({ moduleName: 'app-root/app-root' })
 
 /*
 Do not place any code after the application has been started as it will not

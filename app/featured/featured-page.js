@@ -1,22 +1,19 @@
-const app = require("tns-core-modules/application");
+import { Application } from "@nativescript/core"
 
-const FeaturedViewModel = require("./featured-view-model");
+import { FeaturedViewModel } from "./featured-view-model"
 
-function onNavigatingTo(args) {
-    const page = args.object;
-    page.bindingContext = new FeaturedViewModel();
+export function onNavigatingTo(args) {
+	const page = args.object
+	page.bindingContext = new FeaturedViewModel()
 
-    let data = page.navigationContext;
-    page.bindingContext.set("title", data.article.title);
-    page.bindingContext.set("content", data.article.content);
-    page.bindingContext.set("image", data.article.urlToImage);
-    page.bindingContext.set("url", data.article.url);
+	let data = page.navigationContext
+	page.bindingContext.set("title", data.article.title)
+	page.bindingContext.set("content", data.article.content)
+	page.bindingContext.set("image", data.article.urlToImage)
+	page.bindingContext.set("url", data.article.url)
 }
 
-function onDrawerButtonTap(args) {
-    const sideDrawer = app.getRootView();
-    sideDrawer.showDrawer();
+export function onDrawerButtonTap(args) {
+	const sideDrawer = Application.getRootView()
+	sideDrawer.showDrawer()
 }
-
-exports.onNavigatingTo = onNavigatingTo;
-exports.onDrawerButtonTap = onDrawerButtonTap;
